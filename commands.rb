@@ -21,7 +21,7 @@ class Commands
         channel = event.user.voice_channel
         next "You're not in any voice channel!" unless channel
 
-        # Enumerate all the audio files we have available
+        # Enumerate all the positive audio files we have available
         audio_files = Dir["audio/positive/*"]
         # Play a random audio file
         voip_message(bot, event, channel, audio_files.sample)
@@ -36,7 +36,7 @@ class Commands
         channel = event.user.voice_channel
         next "You're not in any voice channel!" unless channel
 
-        # Enumerate all the audio files we have available
+        # Enumerate all the negative audio files we have available
         audio_files = Dir["audio/negative/*"]
         # Play a random audio file
         voip_message(bot, event, channel, audio_files.sample)
@@ -65,7 +65,9 @@ class Commands
       commands_list = ''
 
       commands = { 'thoughts?' => 'random message in VoIP',
-                   'help' => 'shows the list of available commands' }
+                  'positive?' => 'Lord Shaxx is pleased with you',
+                  'negative?' => 'Lord Shaxx is disappointed',
+                  'help' => 'shows the list of available commands' }
 
       commands.each do |k, v|
         commands_list += "**#{k}** - #{v}\n"
